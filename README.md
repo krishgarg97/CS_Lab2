@@ -28,3 +28,25 @@ Screenshots:
 - [Exploit showing refund](screenshots/exploit.svg)
 - [Vulnerable code excerpt](screenshots/code-line.svg)
 
+Capture (optional)
+------------------
+To produce real screenshots automatically, install dev dependencies and run the capture script. This uses your system Chrome (macOS path shown) and `puppeteer`.
+
+```bash
+cd business-logic-flaw-node
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install
+# ensure Chrome exists at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+npm start & echo $! > server.pid
+node scripts/capture.js
+kill $(cat server.pid) || true
+```
+
+Demo script
+-----------
+`demo.sh` performs curl steps to reproduce the normal purchase and exploit. It uses `jq` to pretty-print JSON — install `jq` if you need it.
+
+Submission
+----------
+Video: add your Google Drive link here once uploaded.
+
+

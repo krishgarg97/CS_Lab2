@@ -52,6 +52,5 @@ Demo script
 
 Submission
 ----------
-Video: add your Google Drive link here once uploaded.
 
 

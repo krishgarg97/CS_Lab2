@@ -28,6 +28,11 @@ Screenshots:
 - [Exploit showing refund](screenshots/exploit.svg)
 - [Vulnerable code excerpt](screenshots/code-line.svg)
 
+- [Initial UI (captured)](screenshots/auto/ui.png)
+- [Normal purchase (captured)](screenshots/auto/normal_purchase.png)
+- [Exploit showing refund (captured)](screenshots/auto/exploit_purchase.png)
+- [Vulnerable code excerpt](screenshots/code-line.svg)
+
 Capture (optional)
 ------------------
 To produce real screenshots automatically, install dev dependencies and run the capture script. This uses your system Chrome (macOS path shown) and `puppeteer`.

@@ -50,7 +50,4 @@ Demo script
 -----------
 `demo.sh` performs curl steps to reproduce the normal purchase and exploit. It uses `jq` to pretty-print JSON — install `jq` if you need it.
 
-Submission
-----------
-
 

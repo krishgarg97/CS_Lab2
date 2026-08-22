@@ -21,3 +21,9 @@ Notes for the assignment video:
 2. Demonstrate entering a negative quantity and show balance increasing.
 3. Explain the bug: server does not validate that `quantity` is positive.
 4. Fix: add a server-side check rejecting non-positive quantities.
+
+Screenshots:
+- [Initial UI](screenshots/initial-ui.svg)
+- [Normal purchase (curl)](screenshots/normal-purchase.svg)
+- [Exploit showing refund](screenshots/exploit.svg)
+- [Vulnerable code excerpt](screenshots/code-line.svg)

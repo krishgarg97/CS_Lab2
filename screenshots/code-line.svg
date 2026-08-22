@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200">
+  <rect width="100%" height="100%" fill="#f4f6f8"/>
+  <text x="20" y="36" font-size="18" fill="#111">Vulnerable code (excerpt from index.js)</text>
+  <rect x="20" y="50" width="760" height="120" fill="#0b1220" rx="6"/>
+  <text x="40" y="86" font-family="monospace" font-size="14" fill="#9ee6ff">const amount = product.price * q;</text>
+  <text x="40" y="110" font-family="monospace" font-size="14" fill="#9ee6ff">// BUSINESS-LOGIC FLAW: no check that quantity is positive</text>
+  <text x="40" y="134" font-family="monospace" font-size="14" fill="#9ee6ff">users[0].balance -= amount;</text>
+</svg>

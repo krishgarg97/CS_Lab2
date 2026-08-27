@@ -1,6 +1,8 @@
 #!/bin/bash
 # Demo script to reproduce the business-logic flaw via curl
-echo "Initial balance:";
+echo "Reset demo state and show initial balance:";
+curl -s http://localhost:3000/reset | jq .
+echo "Current balance:";
 curl -s http://localhost:3000/balance | jq .
 
 echo "\nMake a normal purchase (quantity 1):";

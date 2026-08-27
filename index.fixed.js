@@ -14,6 +14,14 @@ app.get('/balance', (req, res) => res.json(users[0]));
 app.get('/products', (req, res) => res.json(products));
 app.get('/orders', (req, res) => res.json(orders));
 
+// Utility: reset demo data to initial state (helpful for repeated demos)
+app.get('/reset', (req, res) => {
+  users = [{ id: 1, name: 'alice', balance: 1000 }];
+  products = [{ id: 1, name: 'Gadget', price: 100 }];
+  orders = [];
+  res.json({ success: true, balance: users[0] });
+});
+
 app.post('/purchase', (req, res) => {
   const { productId, quantity } = req.body;
   const q = parseInt(quantity, 10);

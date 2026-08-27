@@ -12,6 +12,8 @@ npm start
 
 Open http://localhost:3000 in your browser. Use the form to buy a product. To demonstrate the flaw: set `Quantity` to a negative number (for example `-5`) — the server will add money to the user's balance because it multiplies price * quantity and subtracts the result.
 
+Resetting state: the server exposes `GET /reset` which restores the initial in-memory demo data (balance, products, orders). The bundled `demo.sh` calls this at the start so the demo can be repeated without restarting the server.
+
 Files:
 - `index.js` — Express server and vulnerable `POST /purchase`
 - `public/index.html` — minimal UI

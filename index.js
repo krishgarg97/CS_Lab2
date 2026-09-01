@@ -26,11 +26,19 @@ app.get('/reset', (req, res) => {
 
 app.post('/purchase', (req, res) => {
   const { productId, quantity } = req.body;
-  const q = parseInt(quantity, 10);
+  const q = Number(quantity);
   const product = products.find(p => p.id === Number(productId));
+
   if (!product) return res.status(400).json({ error: 'product not found' });
+  if (!Number.isInteger(q) || q <= 0) {
+    return res.status(400).json({ error: 'quantity must be a positive integer' });
+  }
+
   const amount = product.price * q;
-  // BUSINESS-LOGIC FLAW: no check that quantity is positive
+  if (amount > users[0].balance) {
+    return res.status(400).json({ error: 'insufficient funds for this purchase' });
+  }
+
   users[0].balance -= amount;
   const order = { id: orders.length + 1, productId: product.id, quantity: q, amount };
   orders.push(order);

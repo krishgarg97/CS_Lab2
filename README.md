@@ -26,7 +26,7 @@ Notes for the assignment video:
 5. Reference the fixed version when explaining the secure behavior.
 
 Video:
-- Demo walkthrough video will be linked here after recording.
+- [Demo walkthrough video](https://drive.google.com/file/d/1ugltr0c-UqvscGQhcNHMv5XrdDMILGM3/view?usp=sharing)
 
 Screenshots:
 - [Initial UI (captured)](screenshots/auto/ui.png)

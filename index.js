@@ -7,7 +7,6 @@ app.disable('x-powered-by');
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// In-memory demo data
 let users = [{ id: 1, name: 'alice', balance: 1000 }];
 let products = [{ id: 1, name: 'Gadget', price: 100 }];
 let orders = [];
@@ -16,7 +15,6 @@ app.get('/balance', (req, res) => res.json(users[0]));
 app.get('/products', (req, res) => res.json(products));
 app.get('/orders', (req, res) => res.json(orders));
 
-// Utility: reset demo data to initial state (helpful for repeated demos)
 app.get('/reset', (req, res) => {
   users = [{ id: 1, name: 'alice', balance: 1000 }];
   products = [{ id: 1, name: 'Gadget', price: 100 }];
@@ -26,19 +24,11 @@ app.get('/reset', (req, res) => {
 
 app.post('/purchase', (req, res) => {
   const { productId, quantity } = req.body;
-  const q = Number(quantity);
+  const q = parseInt(quantity, 10);
   const product = products.find(p => p.id === Number(productId));
-
   if (!product) return res.status(400).json({ error: 'product not found' });
-  if (!Number.isInteger(q) || q <= 0) {
-    return res.status(400).json({ error: 'quantity must be a positive integer' });
-  }
-
   const amount = product.price * q;
-  if (amount > users[0].balance) {
-    return res.status(400).json({ error: 'insufficient funds for this purchase' });
-  }
-
+  
   users[0].balance -= amount;
   const order = { id: orders.length + 1, productId: product.id, quantity: q, amount };
   orders.push(order);

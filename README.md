@@ -2,11 +2,10 @@
 
 This small Node/Express app demonstrates a business-logic flaw where a negative `quantity` in a purchase results in a refund (the server trusts the supplied number).
 
-Run:
+Run from the project directory:
 
 ```bash
-cd "business-logic-flaw-node"
-npm install
+npm install --omit=dev
 npm start
 ```
 
@@ -16,6 +15,7 @@ Resetting state: the server exposes `GET /reset` which restores the initial in-m
 
 Files:
 - `index.js` — Express server and vulnerable `POST /purchase`
+- `index.fixed.js` — hardened version with validation and affordability checks
 - `public/index.html` — minimal UI
 
 Notes for the assignment video:
@@ -23,13 +23,12 @@ Notes for the assignment video:
 2. Demonstrate entering a negative quantity and show balance increasing.
 3. Explain the bug: server does not validate that `quantity` is positive.
 4. Fix: add a server-side check rejecting non-positive quantities.
+5. Reference the fixed version when explaining the secure behavior.
+
+Video:
+- Demo walkthrough video will be linked here after recording.
 
 Screenshots:
-- [Initial UI](screenshots/initial-ui.svg)
-- [Normal purchase (curl)](screenshots/normal-purchase.svg)
-- [Exploit showing refund](screenshots/exploit.svg)
-- [Vulnerable code excerpt](screenshots/code-line.svg)
-
 - [Initial UI (captured)](screenshots/auto/ui.png)
 - [Normal purchase (captured)](screenshots/auto/normal_purchase.png)
 - [Exploit showing refund (captured)](screenshots/auto/exploit_purchase.png)
@@ -40,8 +39,9 @@ Capture (optional)
 To produce real screenshots automatically, install dev dependencies and run the capture script. This uses your system Chrome (macOS path shown) and `puppeteer`.
 
 ```bash
-cd business-logic-flaw-node
-PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install
+npm install --omit=dev
+# optional: for screenshot capture only, install the capture tooling separately
+npm install --save-dev puppeteer
 # ensure Chrome exists at /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 npm start & echo $! > server.pid
 node scripts/capture.js
